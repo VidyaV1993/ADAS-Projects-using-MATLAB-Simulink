@@ -19,6 +19,6 @@ Vehicle Direction Determination can also be coupled along - side features like G
 * Using a logical operator block, only one among them is finally given as output signal (Signal Name: Vehicle_Direction_Indicator).
  
 This repository includes the following files for the project 'Vehicle Direction Determination'.
-* .slx - Simulink model
+* .slx 	- Simulink model
 * .sldd - Simulink Data Dictionary
 * .docx - Project report
