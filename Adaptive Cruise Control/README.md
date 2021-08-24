@@ -46,7 +46,7 @@ This repository includes the following files for the project 'Vehicle Direction 
 * .docx - Project report
 
 ### Project Portfolio ###
-Project Portfolio for Vehicle Direction Determination: 
+Project Portfolio for Adaptive Cruise Control: 
 
 
 
