@@ -9,15 +9,19 @@ A radar sensor is usually at the core of the Adaptive Cruise Control. Installed 
 Standard Adaptive Cruise Control can be activated from speeds of around 30 km/h (20 mph) upwards and supports the driver, primarily on cross-country journeys or on freeways. The cruise control stop & go variant is also active at speeds below 30 km/h (20 mph). It can maintain the set distance to the preceding vehicle even at very low speeds and can decelerate to a complete standstill. When the vehicle remains stopped longer, the driver needs only to reactivate the system, for example by briefly stepping on the gas pedal to return to cruise control mode. In this way, cruise control stop & go supports the driver even in heavy traffic and traffic jams.
 Since Adaptive Cruise Control is a comfort and convenience system, brake interventions and vehicle acceleration only take place within defined limits. Even with Adaptive Cruise Control switched on, it remains the driver’s responsibility to monitor the speed and distance from the vehicle in front.
 
-## Objective of Main Project ##
-
-## Requirement 1– Lead Vehicle ##
+## Objective ##
 * Developing Adaptive Cruise Control feature as per the Requirement Document using MATLAB Simulink.
 * Follow all the MBD related processes: Requirement Tagging & Traceability, SLDD creation, Configuration Parameter changes, Model Advisor check & Code Generation.
 * In Configuration Parameters: enable “Support Floating Numbers” under Code Generation settings.
 * Use Embedded Coder to generate the code.
 * If choosing code generation, Storage class for Input signals: ImportedExtern; Storage class for Output signal: Export to File; Storage class for local signals: localizable; Storage class for calibration signals: Const.
 * Choose sample time for all signals as 0.01s
+
+## Requirement 1– Lead Vehicle ##
+* Lead Vehicle is a vehicle which is driving in the road ahead of our drive vehicle. Two input signals (Signal Name: CameraInput_LeadVehicle & RadarInput_LeadVehicle).
+* Ideally sensor fusion techniques will be deployed to process & analyze data from camera & radar. For complexity reasons, let’s not adapt to any such algorithms.
+* We can simply add both the radar & camera inputs & the corresponding output is read as Speed profile output (Signal Name: LeadVehicle_Speed).
+* Speed data of the lead vehicle is critical in implementing the Adaptive Cruise Control algorithm.
 
 ## Requirement 2 – Drive Vehicle ##
 * Drive Vehicle is the vehicle driven by the user & this is the vehicle which has ACC algorithm in it.
