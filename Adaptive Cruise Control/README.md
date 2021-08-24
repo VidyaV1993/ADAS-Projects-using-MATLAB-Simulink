@@ -1,22 +1,39 @@
-# Vehicle Direction Determination
+# Adaptive Cruise Control
 
 ## Aim ##
-To create a Simulink model of Vehicle Direction Detection as per the Requirement data.
+To create a Simulink model of Adaptive Cruise Control as per the Requirement data.
 
 ## General Overview ##
-Identifying the direction of the vehicle is one of the important & diverse features in Autonomous driving & Advanced Driver Assistance Features. This particular sub-feature of identifying the direction of vehicle is basically identifying the direction the vehicle is taking based on the camera input.
-Camera reads the road signs & stores into its memory with unique values for left turn, right turn & straight drive. Depending on the direction it is taking, final indication is given to the driver – as an indication if he is driving in the recommended direction or not.
-Vehicle Direction Determination can also be coupled along - side features like GPS systems to identify whether the vehicle is reaching its destination in an optimized manner. This sub feature can also be used along with Lane Detection, Highway Warning, Ramp Entry / Exit in Wrong Way Detection etc.
+Adaptive Cruise Control Feature for passenger cars allows the host vehicle to adapt to the speed in line with the flow of traffic. Driving in heavy traffic or keeping a safe distance to the preceding vehicle calls for a high level of concentration. The Adaptive Cruise Control feature can reduce the stress on the driver by automatically controlling the vehicle speed & maintaining a predefined minimum distance to the preceding vehicle. As a consequence, the driver enjoys more comfort & can concentrate on the road little better.
+A radar sensor is usually at the core of the Adaptive Cruise Control. Installed at the front of the vehicle, the system permanently monitors the road ahead. As long as the road ahead is clear, cruise control feature maintains the speed set by the driver. If the system spots a slower vehicle within its detection range, it gently reduces speed by releasing the accelerator or actively engaging the brake control system. If the vehicle ahead speeds up or changes lanes, the cruise control automatically accelerates to the driver’s desired speed.
+Standard Adaptive Cruise Control can be activated from speeds of around 30 km/h (20 mph) upwards and supports the driver, primarily on cross-country journeys or on freeways. The cruise control stop & go variant is also active at speeds below 30 km/h (20 mph). It can maintain the set distance to the preceding vehicle even at very low speeds and can decelerate to a complete standstill. When the vehicle remains stopped longer, the driver needs only to reactivate the system, for example by briefly stepping on the gas pedal to return to cruise control mode. In this way, cruise control stop & go supports the driver even in heavy traffic and traffic jams.
+Since Adaptive Cruise Control is a comfort and convenience system, brake interventions and vehicle acceleration only take place within defined limits. Even with Adaptive Cruise Control switched on, it remains the driver’s responsibility to monitor the speed and distance from the vehicle in front.
 
-## Requirement - 1 ##
-* Steering wheel input as yaw rate (Signal name: SteeringWheel_YawDegreeInput) is the input for this system.
-* This is compared against 3 angular values, one each for left turn, right turn & straight drive (Calibration Values: Right_Turn_AngularLimit, Left_Turn_AngularLimit, Straight_Drive_Steering_Angle) to say which specific direction the steering wheel is turning towards.
-* Use switch blocks to compare & develop this requirement. Keep this requirement in a subsystem & output of this requirement is a local signal (Signal Name: Vehicle_Turn_Status).
+## Objective of Main Project ##
 
-## Requirement – 2 ##
-* Keep this requirement as a separate subsystem. Inputs to this requirement are local signal from requirement 1 (Signal Name: Vehicle_Turn_Status) & an input signal from camera (Signal Name: CameraInput_RoadSign), which confirms the occurrence of a road sign.
-* Signal Vehicle_Turn_Status is compared against calibration values (Calibration Values: RightTurn_RoadSign, LeftTurn_RoadSign, Straight_RoadSign), if each of them is found equal, then each of the three corresponding output is compared against the camera input signal,
-* Using a logical operator block, only one among them is finally given as output signal (Signal Name: Vehicle_Direction_Indicator).
+## Requirement 1– Lead Vehicle ##
+* Developing Adaptive Cruise Control feature as per the Requirement Document using MATLAB Simulink.
+* Follow all the MBD related processes: Requirement Tagging & Traceability, SLDD creation, Configuration Parameter changes, Model Advisor check & Code Generation.
+* In Configuration Parameters: enable “Support Floating Numbers” under Code Generation settings.
+* Use Embedded Coder to generate the code.
+* If choosing code generation, Storage class for Input signals: ImportedExtern; Storage class for Output signal: Export to File; Storage class for local signals: localizable; Storage class for calibration signals: Const.
+* Choose sample time for all signals as 0.01s
+
+## Requirement 2 – Drive Vehicle ##
+* Drive Vehicle is the vehicle driven by the user & this is the vehicle which has ACC algorithm in it.
+* Like the Lead Vehicle, Drive Vehicle algorithm also has 2 input signals (Signal Name: CameraInput_DriveVehicle, RadarInput_DriveVehicle) & one signal coming as an Input to this subsystem (Signal Name: Acceleration_Mode) – three inputs into this requirement in total.
+* Like the above requirement, sensor fusion techniques will also be deployed here, for complexity reasons we are ignoring them.
+* Two output signals come from this subsystem (Signal Name: DriveVehicle_Speed & LeadVehicle_Detected).
+* Signal DriveVehicle_Speed is summation of three input signals mentioned above & LeadVehicle_Detected is renamed from Input Signal RadarInput_DriveVehicle by mere use of Signal Conversion block.
+
+## Requirement 3 – Adaptive Cruise Control Algorithm ##
+* Adaptive Cruise Control feature has 3 major modes of operation: OFF Mode, STANDBY Mode & ON Mode. This particular requirement has to be implemented as state machine logic in Simulink.
+* The input signals to this state machine system are (Signal Name: Time_Gap, Set_Speed, Set_Gap, CruiseSwitch, SetSwitch).
+* Also, the output signals (Signal Name: DriveVehicle_Speed & LeadVehicle_Detected) from requirement-2 is fed back as an input signal into this state machine block.
+* Additionally, output signal (Signal Name: LeadVehicle_Speed) from requirement-1 is given as an input signal to this state machine block as well.
+* Output from this subsystem is a signal (Signal Name: Acceleration_Mode) which governs the vehicular speed of the drive vehicle which automatically adjusts its speed & velocity to match the lead vehicle.
+
+#### Note: Additional sub requirements for requirement - 3 are mentioned in detail in the project portfolio as well as the project report. #### 
 
 ### Repo Files ###
 This repository includes the following files for the project 'Vehicle Direction Determination'.
@@ -25,4 +42,10 @@ This repository includes the following files for the project 'Vehicle Direction 
 * .docx - Project report
 
 ### Project Portfolio ###
-Project Portfolio for Vehicle Direction Determination: https://skill-lync.com/student-projects/project-1-mini-project-on-vehicle-direction-detection-37 
+Project Portfolio for Vehicle Direction Determination: 
+
+
+
+
+
+
