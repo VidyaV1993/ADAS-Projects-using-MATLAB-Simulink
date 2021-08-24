@@ -8,4 +8,4 @@ The following are the projects included in this repository:
 * Vehicle Direction Detection
 * Adaptive Cruise Control
 
-The Simulink model has been created using the requirements provided, results have been tested and the code has been generated using the embedded coder app in Simulink.
+The Simulink model has been created using the requirements provided, Simulink Data Dictionary has been created based on the model requirements, results has been tested against multiple scenarios and the code has been generated using the embedded coder app in Simulink.
