@@ -22,3 +22,5 @@ This repository includes the following files for the project 'Vehicle Direction 
 * .slx 	- Simulink model
 * .sldd - Simulink Data Dictionary
 * .docx - Project report
+
+Project Portfolio for Vehicle Direction Determination: https://skill-lync.com/student-projects/project-1-mini-project-on-vehicle-direction-detection-37 
