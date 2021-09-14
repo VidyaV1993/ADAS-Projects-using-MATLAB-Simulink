@@ -46,7 +46,7 @@ This repository includes the following files for the project 'Vehicle Direction 
 * .docx - Project report
 
 ### Project Portfolio ###
-Project Portfolio for Adaptive Cruise Control: 
+Project Portfolio for Adaptive Cruise Control: https://skill-lync.com/student-projects/adas-project-on-adaptive-cruise-control
 
 
 

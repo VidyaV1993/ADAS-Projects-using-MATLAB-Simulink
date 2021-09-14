@@ -13,4 +13,4 @@ The Simulink model has been created using the requirements provided, Simulink Da
 
 ## Project Portfolio ##
 * Project portfolio for Vehicle Direction Detection - https://skill-lync.com/student-projects/project-1-mini-project-on-vehicle-direction-detection-37 
-* Project portfolio for Adaptive Cruise Control - 
+* Project portfolio for Adaptive Cruise Control - https://skill-lync.com/student-projects/adas-project-on-adaptive-cruise-control 
